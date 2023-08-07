@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "graphql:codegen": "graphql-codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,15 +11,19 @@
   },
   "dependencies": {
     "@quiltt/react": "2.2.0",
+    "graphql": "16.7.1",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
     "@types/node": "20.4.8",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "dotenv": "16.3.1",
     "encoding": "0.1.13",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
@@ -27,6 +32,7 @@
     "prettier": "3.0.1",
     "prettier-plugin-tailwindcss": "0.4.1",
     "tailwindcss": "3.3.3",
+    "ts-node": "10.9.1",
     "typescript": "5.1.6"
   }
 }
