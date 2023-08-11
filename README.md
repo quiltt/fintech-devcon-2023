@@ -31,9 +31,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Steps
-1. Login to QuilttHub
-2. Copy Session into `.env` as `QUILTT_API_KEY=`
-3.
+1. Setup Project
+2. Login to https://www.quiltthub.com
+3. Click `[BUTTON]` to login locally
+4. Copy Session into `.env` as `QUILTT_API_KEY=` for GraphQL Codegen
+5. Create Application with Raw data from Plaid or Mx
+  - Pretend to spend a week prototyping integration backend, then a month getting it stable in production
+6. Pick from Business Misfortunes
+  - Need to Support Uncovered Banks
+  - Data Quality Issues
+  - Contract Negotiating Woes
+  - Unexpected Vendor Outage
+7. Upgrade to Unified GraphQL API
 
 ## Learn More
 
