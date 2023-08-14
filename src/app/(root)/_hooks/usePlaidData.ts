@@ -1,5 +1,6 @@
-import { gql, useQuery } from '@quiltt/react'
-import { useMemo } from 'react'
+import { useRawData } from './useRawData'
+
+import { gql } from '@quiltt/react'
 
 const QUERY = gql(`
   query PlaidData {
@@ -106,38 +107,6 @@ const QUERY = gql(`
   }
 `)
 
-export const usePlaidData = () => {
-  const { loading, error, data } = useQuery(QUERY, {
-    errorPolicy: 'all',
-  })
-
-  const plaidData = useMemo(() => {
-    if (!data) return data
-
-    const rawData: any = {}
-
-    if (data.connections) {
-      rawData['connections'] = data.connections
-        .map((obj: any) => obj.sources && obj.sources[0])
-        .filter((obj: any) => !!obj)
-    }
-
-    if (data.accounts) {
-      rawData['accounts'] = data.accounts
-        .map((obj: any) => obj.sources && obj.sources[0])
-        .filter((obj: any) => !!obj)
-    }
-
-    if (data.transactions) {
-      rawData['transactions'] = data.transactions
-        .map((obj: any) => obj.sources && obj.sources[0])
-        .filter((obj: any) => !!obj)
-    }
-
-    return rawData
-  }, [data])
-
-  return { loading, error, data: plaidData }
-}
+export const usePlaidData = () => useRawData(QUERY)
 
 export default usePlaidData
