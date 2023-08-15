@@ -30,7 +30,13 @@ export const LayoutPrivate: FC<LayoutPrivateProps> = ({ children }) => {
   }
 
   if (session) {
-    return <QuilttProvider token={session.token}>{children}</QuilttProvider>
+    return (
+      <>
+        <pre>{session.token}</pre>
+        <hr />
+        <QuilttProvider token={session.token}>{children}</QuilttProvider>
+      </>
+    )
   }
 
   return null

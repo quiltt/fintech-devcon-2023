@@ -12,6 +12,7 @@ export default function PagePlaid() {
 
   return (
     <section>
+      <PlaidButton />
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </section>
   )

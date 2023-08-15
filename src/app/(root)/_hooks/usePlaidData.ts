@@ -1,6 +1,7 @@
-import { useRawData } from './useRawData'
+import { useRawData, QueryData } from './useRawData'
 
 import { gql } from '@quiltt/react'
+import { PlaidAccount, PlaidConnection, PlaidTransaction } from '../../../gql/graphql'
 
 const QUERY = gql(`
   query PlaidData {
@@ -107,6 +108,12 @@ const QUERY = gql(`
   }
 `)
 
-export const usePlaidData = () => useRawData(QUERY)
+export type RawPlaidData = {
+  connections: Array<PlaidConnection>
+  accounts: Array<PlaidAccount>
+  transactions: Array<PlaidTransaction>
+}
+
+export const usePlaidData = (): QueryData<RawPlaidData> => useRawData(QUERY)
 
 export default usePlaidData

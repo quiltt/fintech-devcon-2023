@@ -1,18 +1,18 @@
-import { useQuery } from '@quiltt/react'
+import { gql, useQuery, ApolloError } from '@quiltt/react'
 import { DocumentNode } from 'graphql'
 import { useMemo } from 'react'
 
 export const prepareRawData = (objects: Array<any>) => {
-  return objects
-    .map((obj: any) => {
-      const data = obj.sources && obj.sources[0]
-      if (data) delete data['__typename']
-      return data
-    })
-    .filter((obj: any) => !!obj)
+  return objects.map((obj: any) => obj.sources && obj.sources[0]).filter((obj: any) => !!obj)
 }
 
-export const useRawData = (query: DocumentNode) => {
+export type QueryData<T> = {
+  loading: boolean
+  error: undefined | ApolloError
+  data: undefined | T
+}
+
+export const useRawData = (query: DocumentNode): QueryData<any> => {
   const { loading, error, data } = useQuery(query, {
     errorPolicy: 'all',
   })
