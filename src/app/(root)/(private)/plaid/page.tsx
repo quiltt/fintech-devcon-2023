@@ -1,7 +1,7 @@
 'use client'
 
-import { PlaidButton } from '../../_components'
-import { usePlaidData } from '../../_hooks'
+import { PlaidButton } from '@/components'
+import { usePlaidData } from '@/hooks'
 
 export default function PagePlaid() {
   const { data, loading, error } = usePlaidData()

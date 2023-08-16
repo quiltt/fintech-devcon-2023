@@ -1,7 +1,7 @@
 'use client'
 
-import { MxButton } from '../../_components'
-import { useMxData } from '../../_hooks'
+import { MxButton } from '@/components'
+import { useMxData } from '@/hooks'
 
 export default function PageMx() {
   const { data, loading, error } = useMxData()

@@ -3,7 +3,7 @@ import { DocumentNode } from 'graphql'
 import { useMemo } from 'react'
 
 export const prepareRawData = (objects: Array<any>) => {
-  return objects.map((obj: any) => obj.sources && obj.sources[0]).filter((obj: any) => !!obj)
+  return objects.map((obj: any) => obj.source).filter((obj: any) => !!obj)
 }
 
 export type QueryData<T> = {
@@ -23,15 +23,27 @@ export const useRawData = (query: DocumentNode): QueryData<any> => {
     const prepared: any = {}
 
     if (data.connections) {
-      prepared['connections'] = prepareRawData(data.connections)
+      const preparedConnections = prepareRawData(data.connections)
+
+      if (preparedConnections.length) {
+        prepared['connections'] = preparedConnections
+      }
     }
 
     if (data.accounts) {
-      prepared['accounts'] = prepareRawData(data.accounts)
+      const preparedAccounts = prepareRawData(data.accounts)
+
+      if (preparedAccounts.length) {
+        prepared['accounts'] = preparedAccounts
+      }
     }
 
-    if (data.transactions) {
-      prepared['transactions'] = prepareRawData(data.transactions)
+    if (data.transactionsConnection) {
+      const preparedTransactions = prepareRawData(data.transactionsConnection.nodes)
+
+      if (preparedTransactions.length) {
+        prepared['transactions'] = preparedTransactions
+      }
     }
 
     return prepared

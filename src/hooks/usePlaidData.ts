@@ -1,12 +1,12 @@
 import { useRawData, QueryData } from './useRawData'
 
 import { gql } from '@quiltt/react'
-import { PlaidAccount, PlaidConnection, PlaidTransaction } from '../../../gql/graphql'
+import { PlaidAccount, PlaidConnection, PlaidTransaction } from '../gql/graphql'
 
 const QUERY = gql(`
   query PlaidData {
     connections {
-      sources {
+      source(type: PLAID) {
         ... on PlaidConnection {
           consentExpirationTime
           institutionId
@@ -32,7 +32,7 @@ const QUERY = gql(`
       }
     }
     accounts {
-      sources {
+      source(type: PLAID) {
         ... on PlaidAccount {
           mask
           officialName
@@ -48,7 +48,7 @@ const QUERY = gql(`
     }
     transactionsConnection {
       nodes {
-        sources {
+        source(type: PLAID) {
           ... on PlaidTransaction {
             accountOwner
             authorizedDate

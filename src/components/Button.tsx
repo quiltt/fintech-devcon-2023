@@ -4,7 +4,7 @@ type ButtonProps = {
   children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { children, ...restProps } = props
 
   return (

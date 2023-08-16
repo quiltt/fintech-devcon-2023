@@ -1,6 +1,6 @@
 'use client'
 
-import { UnifiedButton } from '../../_components'
+import { PlaidButton, MxButton } from '@/components'
 
 export default function PageUnified() {
   const data = {}
@@ -12,7 +12,8 @@ export default function PageUnified() {
 
   return (
     <section>
-      <UnifiedButton />
+      <PlaidButton />
+      <MxButton />
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </section>
   )

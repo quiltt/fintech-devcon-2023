@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components'
+import { Button } from './Button'
 import { QuilttButton } from '@quiltt/react'
 
 export const MxButton = () => {

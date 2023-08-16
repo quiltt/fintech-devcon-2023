@@ -1,12 +1,12 @@
 import { useRawData, QueryData } from './useRawData'
 
 import { gql } from '@quiltt/react'
-import { MxAccount, MxConnection, MxTransaction } from '../../../gql/graphql'
+import { MxAccount, MxConnection, MxTransaction } from '../gql/graphql'
 
 const QUERY = gql(`
   query MxData {
     connections {
-      sources {
+      source(type: MX) {
         ... on MxConnection {
           id
           name
@@ -28,7 +28,7 @@ const QUERY = gql(`
       }
     }
     accounts {
-      sources {
+      source(type: MX) {
         ... on MxAccount {
           id
           name
@@ -83,7 +83,7 @@ const QUERY = gql(`
     }
     transactionsConnection {
       nodes {
-        sources {
+        source(type: MX) {
           ... on MxTransaction {
             id
             userId
