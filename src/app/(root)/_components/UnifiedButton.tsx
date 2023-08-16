@@ -5,9 +5,14 @@ import { QuilttButton } from '@quiltt/react'
 
 export const UnifiedButton = () => {
   return (
-    <QuilttButton connectorId="c0n047lhcl" as={Button}>
-      Launch Unified Connector
-    </QuilttButton>
+    <>
+      <QuilttButton connectorId="2he3hw6g5d" as={Button}>
+        Launch Plaid Link
+      </QuilttButton>
+      <QuilttButton connectorId="s4baburzo2" as={Button}>
+        Launch MX Connect
+      </QuilttButton>
+    </>
   )
 }
 

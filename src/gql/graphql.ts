@@ -204,8 +204,108 @@ export enum AccountSort {
 
 /** Source-specific filters. */
 export type AccountSourceFilter = {
+  /** MX account data. */
+  mx?: InputMaybe<AccountSourceMxFilter>;
   /** Plaid account data. */
   plaid?: InputMaybe<AccountSourcePlaidFilter>;
+};
+
+/** Options for filtering inside MX's API payload. */
+export type AccountSourceMxFilter = {
+  /** The account number associated with the account. This will typically be a masked or partial account number. */
+  accountNumber?: InputMaybe<Scalars['String']['input']>;
+  /** The annual percentage rate associated with the account. */
+  apr?: InputMaybe<Scalars['Float']['input']>;
+  /** The annual percentage yield associated with the account. */
+  apy?: InputMaybe<Scalars['Float']['input']>;
+  /** The balance that is available for use in asset accounts like checking and savings. PENDING transactions are typically taken into account with the available balance, but this may not always be the case. available_balance will usually be a positive value for all account types, determined in the same way as the balance field. */
+  availableBalance?: InputMaybe<Scalars['Float']['input']>;
+  /** The amount of credit available for use in liability accounts like credit cards and lines of credit. PENDING transactions are typically taken into account with available credit, but this may not always be the case. available_credit will usually be a positive value for all account types, determined in the same way as the balance field. */
+  availableCredit?: InputMaybe<Scalars['Float']['input']>;
+  /** The current balance of the account. PENDING transactions are typically not taken into account with the current balance, but this may not always be the case. This is the value used for the account balance displayed in MX UIs. The balance will usually be a positive value for all account types. Asset-type accounts (CHECKING, SAVINGS, INVESTMENT) may have a negative balance if they are in overdraft. Debt-type accounts (CREDIT_CARD, LOAN, LINE_OF_CREDIT, MORTGAGE) may have a negative balance if they are overpaid. */
+  balance?: InputMaybe<Scalars['Float']['input']>;
+  /** The cash balance of the account. */
+  cashBalance?: InputMaybe<Scalars['Float']['input']>;
+  /** The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs. */
+  cashSurrenderValue?: InputMaybe<Scalars['Float']['input']>;
+  /** The date and time at which the account was created on the MX Platform. */
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  /** The credit limit associated with the account. */
+  creditLimit?: InputMaybe<Scalars['Float']['input']>;
+  /** The three-character ISO 4217 currency code. */
+  currencyCode?: InputMaybe<Scalars['String']['input']>;
+  /** The day of the month the payment is due. For example, the 14th is passed as 14. */
+  dayPaymentIsDue?: InputMaybe<Scalars['Int']['input']>;
+  /** The amount paid to the beneficiary of the account upon death of the account owner. */
+  deathBenefit?: InputMaybe<Scalars['Int']['input']>;
+  /** The unique identifier for the account. Defined by MX. */
+  guid?: InputMaybe<Scalars['String']['input']>;
+  /** The sum of all long holdings within this account, not including any that are shorted and not including cash. */
+  holdingsValue?: InputMaybe<Scalars['Float']['input']>;
+  /** The unique partner-defined identifier for the account */
+  id?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time at which the account was last successfully aggregated and received data. */
+  importedAt?: InputMaybe<Scalars['String']['input']>;
+  /** A unique identifier for the institution associated with this account. Defined by MX. */
+  institutionCode?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the insured individual. */
+  insuredName?: InputMaybe<Scalars['String']['input']>;
+  /** The interest rate associated with the account. */
+  interestRate?: InputMaybe<Scalars['Float']['input']>;
+  /** This indicates whether an account has been closed. */
+  isClosed?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the account is hidden. Defaults to `false`. */
+  isHidden?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The date and time of the most recent payment on the account. */
+  lastPayment?: InputMaybe<Scalars['Float']['input']>;
+  /** The amount of the most recent payment on the account. */
+  lastPaymentAt?: InputMaybe<Scalars['String']['input']>;
+  /** The amount of the loan associated with the account. */
+  loanAmount?: InputMaybe<Scalars['Float']['input']>;
+  /** The date on which the account matures. */
+  maturesOn?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the member associated with the account. Defined by MX. */
+  memberGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique, partner-defined, identifier for the member associated with this account. */
+  memberId?: InputMaybe<Scalars['String']['input']>;
+  /** This indicates whether the associated member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false. */
+  memberIsManagedByUser?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Additional information a partner can store on the account. */
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  /** The minimum balance associated with the account. */
+  minimumBalance?: InputMaybe<Scalars['Float']['input']>;
+  /** The minimum payment required for an account. This can apply to any debt account. */
+  minimumPayment?: InputMaybe<Scalars['Float']['input']>;
+  /** The human-readable name for the account. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** An alternate name for the account. */
+  nickname?: InputMaybe<Scalars['String']['input']>;
+  /** The original balance associated with the account. This will always be positive. */
+  originalBalance?: InputMaybe<Scalars['Float']['input']>;
+  /** The amount paid out to the insured individual or beneficiary under the conditions of the insurance policy. */
+  payOutAmount?: InputMaybe<Scalars['Float']['input']>;
+  /** The date and time at which the next payment is due on the account. */
+  paymentDueAt?: InputMaybe<Scalars['String']['input']>;
+  /** The payoff balance for a debt account. This will normally be a positive number. */
+  payoffBalance?: InputMaybe<Scalars['Float']['input']>;
+  /** The insurance policy’s premium amount. */
+  premiumAmount?: InputMaybe<Scalars['Float']['input']>;
+  /** The routing number for the account. */
+  routingNumber?: InputMaybe<Scalars['String']['input']>;
+  /** The date on which a debt account was started. */
+  startedOn?: InputMaybe<Scalars['String']['input']>;
+  /** The account’s subtype, e.g., PLAN_401_K, MONEY_MARKET, or HOME_EQUITY. */
+  subtype?: InputMaybe<Scalars['String']['input']>;
+  /** The total value of the account. */
+  totalAccountValue?: InputMaybe<Scalars['Float']['input']>;
+  /** The general or parent type of the account. */
+  type?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time at which the account was most recently updated. */
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the user associated with the account. Defined by MX. */
+  userGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique, partner-defined, identifier for the user associated with this account. */
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Options for filtering inside Plaid's API payload. */
@@ -264,11 +364,13 @@ export type AccountSourcePlaidFilter = {
 
 /** Represents a data source for the Account. */
 export enum AccountSourceType {
+  /** MX */
+  Mx = 'MX',
   /** Plaid */
   Plaid = 'PLAID'
 }
 
-export type AccountSources = PlaidAccount;
+export type AccountSources = MxAccount | PlaidAccount;
 
 export enum AccountState {
   /** Terminated */
@@ -461,8 +563,49 @@ export type ConnectionPlaidImportPayload = {
 
 /** Source-specific filters. */
 export type ConnectionSourceFilter = {
+  /** MX Member data. */
+  mx?: InputMaybe<ConnectionSourceMxFilter>;
   /** Plaid Item data. */
   plaid?: InputMaybe<ConnectionSourcePlaidFilter>;
+};
+
+/** Options for filtering inside MX's API payload. */
+export type ConnectionSourceMxFilter = {
+  /**
+   * The date and time the most recent aggregation-type job was started, given in ISO 8601 format with a time component. A job will automatically be started when a member is created or its credentials are updated, unless the `skip_aggregation` parameter is used. Jobs can also be started via manual aggregations, background aggregations, API endpoints, or when opening an MX widget. A job can be a normal aggregation, or a premium job such as identification, verification, fetching statements, or fetching an extended transaction history.
+   *
+   */
+  aggregatedAt?: InputMaybe<Scalars['String']['input']>;
+  /** This indicates whether background aggregation is disabled for the member. */
+  backgroundAggregationIsDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates the state of a member’s aggregation. See member connection statuses for more information. */
+  connectionStatus?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the member. Defined by MX. */
+  guid?: InputMaybe<Scalars['String']['input']>;
+  /** The partner-defined unique identifier for the member. */
+  id?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the institution associated with the member. Defined by MX. */
+  institutionCode?: InputMaybe<Scalars['String']['input']>;
+  /** This indicates whether the member was being aggregated at the time of the request. */
+  isBeingAggregated?: InputMaybe<Scalars['Boolean']['input']>;
+  /**
+   * This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false.
+   *
+   */
+  isManagedByUser?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the member uses OAuth to authenticate. Defaults to `false`. */
+  isOauth?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Additional information you can store on this member. */
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the member. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  oauthWindowUri?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time the member was last successfully aggregated. */
+  successfullyAggregatedAt?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the user associated with the member. Defined by MX. */
+  userGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique partner-defined identifier for the user associated with the member. */
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Options for filtering inside Plaid's API payload. */
@@ -499,11 +642,13 @@ export type ConnectionSourcePlaidFilter = {
 
 /** Represents a data source for the Connection. */
 export enum ConnectionSourceType {
+  /** MX */
+  Mx = 'MX',
   /** Plaid */
   Plaid = 'PLAID'
 }
 
-export type ConnectionSources = PlaidConnection;
+export type ConnectionSources = MxConnection | PlaidConnection;
 
 /** Represents the status of a Connection. */
 export enum ConnectionStatus {
@@ -551,6 +696,96 @@ export type ConnectionUpdatedPayload = {
   __typename?: 'ConnectionUpdatedPayload';
   /** Connection */
   connection?: Maybe<Connection>;
+};
+
+/** Autogenerated input type of ConnectorMxClose */
+export type ConnectorMxCloseInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The `connectorToken` string from the Connector session initialization response. */
+  connectorToken: Scalars['String']['input'];
+  /** The `metadata` object from MX Connect's `memberConnected` callback. */
+  metadata: Scalars['JSON']['input'];
+};
+
+/** Autogenerated return type of ConnectorMxClose. */
+export type ConnectorMxClosePayload = {
+  __typename?: 'ConnectorMxClosePayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** A list of MX API errors from the mutation. */
+  errors?: Maybe<Array<MxMutationError>>;
+  /** The Connection. */
+  record?: Maybe<Connection>;
+  /** Specifies whether the mutation was successful. */
+  success: Scalars['Boolean']['output'];
+};
+
+/** Autogenerated input type of ConnectorMxInitialize */
+export type ConnectorMxInitializeInput = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Used as a redirect destination at the end of OAuth, if used with `is_mobile_webview: true` or `oauth_referral_source: "APP"`.
+   *
+   */
+  clientRedirectUrl?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Load the Connect widget in the specified `color_scheme`; options are `light` and `dark`. Defaults to `light`.
+   *
+   */
+  colorScheme?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * The ID of the Connection that will be updated with MX Connect. This is typically used when repairing a connection with an `ERROR_REPAIRABLE` status.
+   *
+   */
+  connectionId?: InputMaybe<Scalars['ID']['input']>;
+  /**
+   * Set to `true` or `false` to explicitly set the value of `background_aggregation_is_disabled` for new members created through the Connect widget
+   *
+   */
+  disableBackgroundAgg?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The Connection features to be enabled. */
+  features?: InputMaybe<Array<ConnectionFeature>>;
+  /**
+   * When set to `false` while creating or updating a member, transaction data will not be automatically aggregated. Future manual or background aggregations will not be affected.
+   *
+   */
+  includeTransactions?: InputMaybe<Scalars['Boolean']['input']>;
+  /**
+   * Renders the widget in a mobile WebView. Executes URL updates in place of the JavaScript event postMessages.
+   *
+   */
+  isMobileWebview?: InputMaybe<Scalars['Boolean']['input']>;
+  /**
+   * This determines how MX will respond to the result of an OAuth flow.
+   *
+   * When set to `APP`, MX will redirect to the URI specified in the ui_message_webview_url_scheme.
+   *
+   * When set to `BROWSER`, MX will send a postMessage but not redirect.
+   *
+   * If `is_mobile_webview` is `true`, this defaults to `APP`. If false, it defaults to `BROWSER`.
+   *
+   */
+  oauthReferralSource?: InputMaybe<Scalars['String']['input']>;
+  /**
+   * Used in postMessages and OAuth redirects in WebViews. Defaults to `mx``.
+   *
+   */
+  uiMessageWebviewUrlScheme?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Autogenerated return type of ConnectorMxInitialize. */
+export type ConnectorMxInitializePayload = {
+  __typename?: 'ConnectorMxInitializePayload';
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** A list of MX API errors from the mutation. */
+  errors?: Maybe<Array<MxMutationError>>;
+  /** Connector payload for MX Connect. */
+  record?: Maybe<MxConnector>;
+  /** Specifies whether the mutation was successful. */
+  success: Scalars['Boolean']['output'];
 };
 
 /** Autogenerated input type of ConnectorPlaidClose */
@@ -1052,6 +1287,8 @@ export type Image = {
 
 /** Represents the data source for the Image. */
 export enum ImageSource {
+  /** MX */
+  Mx = 'MX',
   /** Plaid */
   Plaid = 'PLAID',
   /** Spade */
@@ -1099,11 +1336,13 @@ export type InstitutionSourcesArgs = {
 
 /** Represents a data source for the Institution. */
 export enum InstitutionSourceType {
+  /** MX */
+  Mx = 'MX',
   /** Plaid */
   Plaid = 'PLAID'
 }
 
-export type InstitutionSources = PlaidInstitution;
+export type InstitutionSources = MxInstitution | PlaidInstitution;
 
 /** A Merchant represents the accounting of a merchant relationship. */
 export type Merchant = {
@@ -1191,6 +1430,10 @@ export type Mutation = {
   connectionPlaidImport?: Maybe<ConnectionPlaidImportPayload>;
   /** Update a Connection's metadata. */
   connectionUpdate?: Maybe<ConnectionUpdatePayload>;
+  /** Create or update an MX-sourced Connection from a successful MX Connect submission. */
+  connectorMxClose?: Maybe<ConnectorMxClosePayload>;
+  /** Generate a widget URL to initialize MX Connect. */
+  connectorMxInitialize?: Maybe<ConnectorMxInitializePayload>;
   /** Create or update a Plaid-sourced Connection from a successful Plaid Link submission. */
   connectorPlaidClose?: Maybe<ConnectorPlaidClosePayload>;
   /** Generate a Plaid Link token to initialize Plaid Link. */
@@ -1234,6 +1477,18 @@ export type MutationConnectionUpdateArgs = {
 
 
 /** The top-level Mutation type. Mutations are used to make requests that create or modify data. */
+export type MutationConnectorMxCloseArgs = {
+  input: ConnectorMxCloseInput;
+};
+
+
+/** The top-level Mutation type. Mutations are used to make requests that create or modify data. */
+export type MutationConnectorMxInitializeArgs = {
+  input: ConnectorMxInitializeInput;
+};
+
+
+/** The top-level Mutation type. Mutations are used to make requests that create or modify data. */
 export type MutationConnectorPlaidCloseArgs = {
   input: ConnectorPlaidCloseInput;
 };
@@ -1266,6 +1521,297 @@ export type MutationProfileUpdateArgs = {
 /** The top-level Mutation type. Mutations are used to make requests that create or modify data. */
 export type MutationTransactionUpdateArgs = {
   input: TransactionUpdateInput;
+};
+
+/** MX Account data. */
+export type MxAccount = {
+  __typename?: 'MxAccount';
+  /** The source of the data. */
+  _sourcename: AccountSourceType;
+  /** The account number associated with the account. This will typically be a masked or partial account number. */
+  accountNumber?: Maybe<Scalars['String']['output']>;
+  /** The annual percentage rate associated with the account. */
+  apr?: Maybe<Scalars['Float']['output']>;
+  /** The annual percentage yield associated with the account. */
+  apy?: Maybe<Scalars['Float']['output']>;
+  /** The balance that is available for use in asset accounts like checking and savings. PENDING transactions are typically taken into account with the available balance, but this may not always be the case. available_balance will usually be a positive value for all account types, determined in the same way as the balance field. */
+  availableBalance?: Maybe<Scalars['Float']['output']>;
+  /** The amount of credit available for use in liability accounts like credit cards and lines of credit. PENDING transactions are typically taken into account with available credit, but this may not always be the case. available_credit will usually be a positive value for all account types, determined in the same way as the balance field. */
+  availableCredit?: Maybe<Scalars['Float']['output']>;
+  /** The current balance of the account. PENDING transactions are typically not taken into account with the current balance, but this may not always be the case. This is the value used for the account balance displayed in MX UIs. The balance will usually be a positive value for all account types. Asset-type accounts (CHECKING, SAVINGS, INVESTMENT) may have a negative balance if they are in overdraft. Debt-type accounts (CREDIT_CARD, LOAN, LINE_OF_CREDIT, MORTGAGE) may have a negative balance if they are overpaid. */
+  balance?: Maybe<Scalars['Float']['output']>;
+  /** The cash balance of the account. */
+  cashBalance?: Maybe<Scalars['Float']['output']>;
+  /** The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs. */
+  cashSurrenderValue?: Maybe<Scalars['Float']['output']>;
+  /** The date and time at which the account was created on the MX Platform. */
+  createdAt?: Maybe<Scalars['String']['output']>;
+  /** The credit limit associated with the account. */
+  creditLimit?: Maybe<Scalars['Float']['output']>;
+  /** The three-character ISO 4217 currency code. */
+  currencyCode?: Maybe<Scalars['String']['output']>;
+  /** The day of the month the payment is due. For example, the 14th is passed as 14. */
+  dayPaymentIsDue?: Maybe<Scalars['Int']['output']>;
+  /** The amount paid to the beneficiary of the account upon death of the account owner. */
+  deathBenefit?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for the account. Defined by MX. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** The sum of all long holdings within this account, not including any that are shorted and not including cash. */
+  holdingsValue?: Maybe<Scalars['Float']['output']>;
+  /** The unique partner-defined identifier for the account */
+  id?: Maybe<Scalars['String']['output']>;
+  /** The date and time at which the account was last successfully aggregated and received data. */
+  importedAt?: Maybe<Scalars['String']['output']>;
+  /** A unique identifier for the institution associated with this account. Defined by MX. */
+  institutionCode?: Maybe<Scalars['String']['output']>;
+  /** The name of the insured individual. */
+  insuredName?: Maybe<Scalars['String']['output']>;
+  /** The interest rate associated with the account. */
+  interestRate?: Maybe<Scalars['Float']['output']>;
+  /** This indicates whether an account has been closed. */
+  isClosed?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the account is hidden. Defaults to `false`. */
+  isHidden?: Maybe<Scalars['Boolean']['output']>;
+  /** The date and time of the most recent payment on the account. */
+  lastPayment?: Maybe<Scalars['Float']['output']>;
+  /** The amount of the most recent payment on the account. */
+  lastPaymentAt?: Maybe<Scalars['String']['output']>;
+  /** The amount of the loan associated with the account. */
+  loanAmount?: Maybe<Scalars['Float']['output']>;
+  /** The date on which the account matures. */
+  maturesOn?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the member associated with the account. Defined by MX. */
+  memberGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique, partner-defined, identifier for the member associated with this account. */
+  memberId?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether the associated member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false. */
+  memberIsManagedByUser?: Maybe<Scalars['Boolean']['output']>;
+  /** Additional information a partner can store on the account. */
+  metadata?: Maybe<Scalars['String']['output']>;
+  /** The minimum balance associated with the account. */
+  minimumBalance?: Maybe<Scalars['Float']['output']>;
+  /** The minimum payment required for an account. This can apply to any debt account. */
+  minimumPayment?: Maybe<Scalars['Float']['output']>;
+  /** The human-readable name for the account. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** An alternate name for the account. */
+  nickname?: Maybe<Scalars['String']['output']>;
+  /** The original balance associated with the account. This will always be positive. */
+  originalBalance?: Maybe<Scalars['Float']['output']>;
+  /** The amount paid out to the insured individual or beneficiary under the conditions of the insurance policy. */
+  payOutAmount?: Maybe<Scalars['Float']['output']>;
+  /** The date and time at which the next payment is due on the account. */
+  paymentDueAt?: Maybe<Scalars['String']['output']>;
+  /** The payoff balance for a debt account. This will normally be a positive number. */
+  payoffBalance?: Maybe<Scalars['Float']['output']>;
+  /** The insurance policy’s premium amount. */
+  premiumAmount?: Maybe<Scalars['Float']['output']>;
+  /** The routing number for the account. */
+  routingNumber?: Maybe<Scalars['String']['output']>;
+  /** The date on which a debt account was started. */
+  startedOn?: Maybe<Scalars['String']['output']>;
+  /** The account’s subtype, e.g., PLAN_401_K, MONEY_MARKET, or HOME_EQUITY. */
+  subtype?: Maybe<Scalars['String']['output']>;
+  /** The total value of the account. */
+  totalAccountValue?: Maybe<Scalars['Float']['output']>;
+  /** The general or parent type of the account. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The date and time at which the account was most recently updated. */
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the user associated with the account. Defined by MX. */
+  userGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique, partner-defined, identifier for the user associated with this account. */
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+/** MX Member data. */
+export type MxConnection = {
+  __typename?: 'MxConnection';
+  /** The source of the data. */
+  _sourcename: ConnectionSourceType;
+  /**
+   * The date and time the most recent aggregation-type job was started, given in ISO 8601 format with a time component. A job will automatically be started when a member is created or its credentials are updated, unless the `skip_aggregation` parameter is used. Jobs can also be started via manual aggregations, background aggregations, API endpoints, or when opening an MX widget. A job can be a normal aggregation, or a premium job such as identification, verification, fetching statements, or fetching an extended transaction history.
+   *
+   */
+  aggregatedAt?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether background aggregation is disabled for the member. */
+  backgroundAggregationIsDisabled: Scalars['Boolean']['output'];
+  /** This indicates the state of a member’s aggregation. See member connection statuses for more information. */
+  connectionStatus?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the member. Defined by MX. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** The partner-defined unique identifier for the member. */
+  id?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the institution associated with the member. Defined by MX. */
+  institutionCode?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether the member was being aggregated at the time of the request. */
+  isBeingAggregated?: Maybe<Scalars['Boolean']['output']>;
+  /**
+   * This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false.
+   *
+   */
+  isManagedByUser?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the member uses OAuth to authenticate. Defaults to `false`. */
+  isOauth?: Maybe<Scalars['Boolean']['output']>;
+  /** Additional information you can store on this member. */
+  metadata?: Maybe<Scalars['String']['output']>;
+  /** The name of the member. */
+  name?: Maybe<Scalars['String']['output']>;
+  oauthWindowUri?: Maybe<Scalars['String']['output']>;
+  /** The date and time the member was last successfully aggregated. */
+  successfullyAggregatedAt?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the user associated with the member. Defined by MX. */
+  userGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique partner-defined identifier for the user associated with the member. */
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+/** The Connector response for MX Connect. */
+export type MxConnector = {
+  __typename?: 'MxConnector';
+  /** The status of the Connector Session. */
+  connectorStatus: ConnectorStatus;
+  /** The Token for the Connector Session. */
+  connectorToken?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+/** MX Institution data. */
+export type MxInstitution = {
+  __typename?: 'MxInstitution';
+  /** The source of the data. */
+  _sourcename: InstitutionSourceType;
+  /** A unique identifier for each institution, defined by MX. */
+  code?: Maybe<Scalars['String']['output']>;
+  /** The URL of the institution for helping users recover a forgotten password. */
+  forgotPasswordUrl?: Maybe<Scalars['String']['output']>;
+  /** The URL of the institution for helping users recover a forgotten username. */
+  forgotUsernameUrl?: Maybe<Scalars['String']['output']>;
+  /** The URL for a 100px X 100px logo for each institution. A generic logo is returned for institutions that don’t have one. */
+  mediumLogoUrl?: Maybe<Scalars['String']['output']>;
+  /** An easy-to-read name for an institution, e.g., “Chase Bank” or “Wells Fargo Bank.” */
+  name?: Maybe<Scalars['String']['output']>;
+  /** String	The URL for a 50px X 50px logo for each institution. A generic logo is returned for institutions that don’t have one. */
+  smallLogoUrl?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether the institution supports account identification. */
+  supportsAccountIdentification?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the institution provides access to account statements. */
+  supportsAccountStatement?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the institution supports account verification. */
+  supportsAccountVerification?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the institution supports OAuth authentication. */
+  supportsOauth?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the institution allows access to up to 24 months of transaction data. */
+  supportsTransactionHistory?: Maybe<Scalars['Boolean']['output']>;
+  /** The URL of the institution for helping users troubleshoot any other sign-in issue. */
+  troubleSigningInUrl?: Maybe<Scalars['String']['output']>;
+  /** The URL for particular institution’s website , e.g., www.chase.com. */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+/** An MX API error encountered while executing the mutation. */
+export type MxMutationError = {
+  __typename?: 'MxMutationError';
+  /** A developer-friendly representation of the MX error. */
+  message: Scalars['String']['output'];
+  /** A representation of the HTTP status code. */
+  status: Scalars['String']['output'];
+  /** A categorization of the MX error. */
+  type: Scalars['String']['output'];
+};
+
+/** MX Transaction data. */
+export type MxTransaction = {
+  __typename?: 'MxTransaction';
+  /** The source of the data. */
+  _sourcename: TransactionSourceType;
+  /** The unique identifier for the account associated with the transaction. Defined by MX. */
+  accountGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique partner-defined identifier for the account associated with the transaction. This can only be set for partner-managed accounts. It should be ignored for user-managed transactions, even in occasional cases where it may return with a value. */
+  accountId?: Maybe<Scalars['String']['output']>;
+  /** The monetary amount of the transaction. */
+  amount?: Maybe<Scalars['Float']['output']>;
+  /** The category of the transaction. */
+  category?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the category assigned to the transaction. */
+  categoryGuid?: Maybe<Scalars['String']['output']>;
+  /** The check number for the transaction. */
+  checkNumberString?: Maybe<Scalars['String']['output']>;
+  /** The date and time the transaction was created. */
+  createdAt?: Maybe<Scalars['String']['output']>;
+  /** The three-character ISO 4217 currency code, e.g. USD. */
+  currencyCode?: Maybe<Scalars['String']['output']>;
+  /** The date on which the transaction took place. This is the field used when searching for transactions by date. This field is generally the same as transacted_at, but uses posted_at as a fallback. */
+  date?: Maybe<Scalars['String']['output']>;
+  /** A human-readable version of the original_description field described below, e.g., “Sam’s Club,” “Johnny’s Tavern.” This is provided by the MX Platform. */
+  description?: Maybe<Scalars['String']['output']>;
+  /** The transaction type assigned by the partner. */
+  extendedTransactionType?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the transaction. Defined by MX. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** The unique partner-defined identifier for the transaction. This can only be set for partner-managed transactions. It should be ignored for user-managed transactions, even in occasional cases where it may return with a value. */
+  id?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether the transaction represents a bill pay. */
+  isBillPay?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents a direct deposit. */
+  isDirectDeposit?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents an expense. */
+  isExpense?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents a fee. */
+  isFee?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents income. */
+  isIncome?: Maybe<Scalars['Boolean']['output']>;
+  /** If the transaction is international as defined by the data provider, this field will be true. If the data provider determines it is not international then it will be false. It will be null if the data provider does not have this information. */
+  isInternational?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents an overdraft fee. */
+  isOverdraftFee?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents a payroll advance. */
+  isPayrollAdvance?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether a transaction is a recurring credit or debit. */
+  isRecurring?: Maybe<Scalars['Boolean']['output']>;
+  /** This indicates whether the transaction represents a payment for a subscription service such as Netflix or Audible. */
+  isSubscription?: Maybe<Scalars['Boolean']['output']>;
+  /** The latitude of the location where the transaction occurred. The number is a signed decimal (e.g. Rio de Janeiro’s latitude is -22.9027800 and Tokyo’s latitude is 35.689488). */
+  latitude?: Maybe<Scalars['Float']['output']>;
+  /** A human-readable description of the transaction, provided in a local language. */
+  localizedDescription?: Maybe<Scalars['String']['output']>;
+  /** Additional descriptive information about the transaction, provided in a local language. */
+  localizedMemo?: Maybe<Scalars['String']['output']>;
+  /** The longitude of the location where the transaction occurred. The number is a signed decimal (e.g. Rio de Janeiro’s longitude is -43.2075000 and Tokyo’s longitude is 139.691706). */
+  longitude?: Maybe<Scalars['Float']['output']>;
+  /** The unique identifier for the member associated with the transaction Defined by MX. */
+  memberGuid?: Maybe<Scalars['String']['output']>;
+  /** This indicates whether the associated member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false. */
+  memberIsManagedByUser?: Maybe<Scalars['Boolean']['output']>;
+  /** This field contains additional descriptive information about the transaction. */
+  memo?: Maybe<Scalars['String']['output']>;
+  /** The ISO 18245 category code for the transaction. */
+  merchantCategoryCode?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for the merchant associated with this transaction. Defined by MX. */
+  merchantGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the merchant_location associated with this transaction. Defined by MX. */
+  merchantLocationGuid?: Maybe<Scalars['String']['output']>;
+  /** Custom data */
+  metadata?: Maybe<Scalars['String']['output']>;
+  /** The original description of the transaction as provided by our data feed. See description above for more information. */
+  originalDescription?: Maybe<Scalars['String']['output']>;
+  /** The date and time the transaction was posted to the account. */
+  postedAt?: Maybe<Scalars['String']['output']>;
+  /** The status of the transaction. This will be either POSTED or PENDING. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The parent category assigned to this transaction’s category. */
+  topLevelCategory?: Maybe<Scalars['String']['output']>;
+  /** The date and time the transaction took place. */
+  transactedAt?: Maybe<Scalars['String']['output']>;
+  /** The type of transaction. This will be either CREDIT or DEBIT. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The date and time the transaction was last updated. */
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  /** The unique identifier for the user associated with this transaction. Defined by MX. */
+  userGuid?: Maybe<Scalars['String']['output']>;
+  /** The unique partner-defined identifier for the user associated with the transaction. */
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 /** Information about pagination in a connection. */
@@ -1327,7 +1873,7 @@ export type PlaidAccount = {
   /** The official name of the account as given by the financial institution */
   officialName?: Maybe<Scalars['String']['output']>;
   /** A unique and persistent identifier for accounts that can be used to trace multiple instances of the same account across different Items for depository accounts. This is currently an opt-in field and only supported for Chase Items. */
-  persistentAccountId: Scalars['String']['output'];
+  persistentAccountId?: Maybe<Scalars['String']['output']>;
   /** See the [Account type schema](https://plaid.com/docs/api/accounts/#account-type-schema) for a full listing of account types and corresponding subtypes. */
   subtype?: Maybe<Scalars['String']['output']>;
   /**
@@ -2633,10 +3179,102 @@ export enum TransactionSort {
 
 /** Source-specific filters. */
 export type TransactionSourceFilter = {
+  /** MX Transaction data. */
+  mx?: InputMaybe<TransactionSourceMxFilter>;
   /** Plaid Transaction data. */
   plaid?: InputMaybe<TransactionSourcePlaidFilter>;
   /** Spade Transaction data. */
   spade?: InputMaybe<TransactionSourceSpadeFilter>;
+};
+
+/** Options for filtering inside MX's API payloads */
+export type TransactionSourceMxFilter = {
+  /** The unique identifier for the account associated with the transaction. Defined by MX. */
+  accountGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique partner-defined identifier for the account associated with the transaction. This can only be set for partner-managed accounts. It should be ignored for user-managed transactions, even in occasional cases where it may return with a value. */
+  accountId?: InputMaybe<Scalars['String']['input']>;
+  /** The monetary amount of the transaction. */
+  amount?: InputMaybe<Scalars['Float']['input']>;
+  /** The category of the transaction. */
+  category?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the category assigned to the transaction. */
+  categoryGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The check number for the transaction. */
+  checkNumberString?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time the transaction was created. */
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  /** The three-character ISO 4217 currency code, e.g. USD. */
+  currencyCode?: InputMaybe<Scalars['String']['input']>;
+  /** The date on which the transaction took place. This is the field used when searching for transactions by date. This field is generally the same as transacted_at, but uses posted_at as a fallback. */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A human-readable version of the original_description field described below, e.g., “Sam’s Club,” “Johnny’s Tavern.” This is provided by the MX Platform. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The transaction type assigned by the partner. */
+  extendedTransactionType?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the transaction. Defined by MX. */
+  guid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique partner-defined identifier for the transaction. This can only be set for partner-managed transactions. It should be ignored for user-managed transactions, even in occasional cases where it may return with a value. */
+  id?: InputMaybe<Scalars['String']['input']>;
+  /** This indicates whether the transaction represents a bill pay. */
+  isBillPay?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents a direct deposit. */
+  isDirectDeposit?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents an expense. */
+  isExpense?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents a fee. */
+  isFee?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents income. */
+  isIncome?: InputMaybe<Scalars['Boolean']['input']>;
+  /** If the transaction is international as defined by the data provider, this field will be true. If the data provider determines it is not international then it will be false. It will be null if the data provider does not have this information. */
+  isInternational?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents an overdraft fee. */
+  isOverdraftFee?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents a payroll advance. */
+  isPayrollAdvance?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether a transaction is a recurring credit or debit. */
+  isRecurring?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This indicates whether the transaction represents a payment for a subscription service such as Netflix or Audible. */
+  isSubscription?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The latitude of the location where the transaction occurred. The number is a signed decimal (e.g. Rio de Janeiro’s latitude is -22.9027800 and Tokyo’s latitude is 35.689488). */
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  /** A human-readable description of the transaction, provided in a local language. */
+  localizedDescription?: InputMaybe<Scalars['String']['input']>;
+  /** Additional descriptive information about the transaction, provided in a local language. */
+  localizedMemo?: InputMaybe<Scalars['String']['input']>;
+  /** The longitude of the location where the transaction occurred. The number is a signed decimal (e.g. Rio de Janeiro’s longitude is -43.2075000 and Tokyo’s longitude is 139.691706). */
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  /** The unique identifier for the member associated with the transaction Defined by MX. */
+  memberGuid?: InputMaybe<Scalars['String']['input']>;
+  /** This indicates whether the associated member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to false. */
+  memberIsManagedByUser?: InputMaybe<Scalars['Boolean']['input']>;
+  /** This field contains additional descriptive information about the transaction. */
+  memo?: InputMaybe<Scalars['String']['input']>;
+  /** The ISO 18245 category code for the transaction. */
+  merchantCategoryCode?: InputMaybe<Scalars['Int']['input']>;
+  /** The unique identifier for the merchant associated with this transaction. Defined by MX. */
+  merchantGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the merchant_location associated with this transaction. Defined by MX. */
+  merchantLocationGuid?: InputMaybe<Scalars['String']['input']>;
+  /** Custom data */
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  /** The original description of the transaction as provided by our data feed. See description above for more information. */
+  originalDescription?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time the transaction was posted to the account. */
+  postedAt?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the transaction. This will be either POSTED or PENDING. */
+  status?: InputMaybe<Scalars['String']['input']>;
+  /** The parent category assigned to this transaction’s category. */
+  topLevelCategory?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time the transaction took place. */
+  transactedAt?: InputMaybe<Scalars['String']['input']>;
+  /** The type of transaction. This will be either CREDIT or DEBIT. */
+  type?: InputMaybe<Scalars['String']['input']>;
+  /** The date and time the transaction was last updated. */
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  /** The unique identifier for the user associated with this transaction. Defined by MX. */
+  userGuid?: InputMaybe<Scalars['String']['input']>;
+  /** The unique partner-defined identifier for the user associated with the transaction. */
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Options for filtering inside Plaid's API payloads */
@@ -2848,6 +3486,8 @@ export type TransactionSourceSpadeFilter = {
 
 /** Represents a data source for the Transaction. */
 export enum TransactionSourceType {
+  /** MX */
+  Mx = 'MX',
   /** Plaid */
   Plaid = 'PLAID',
   /** Quiltt */
@@ -2856,7 +3496,7 @@ export enum TransactionSourceType {
   Spade = 'SPADE'
 }
 
-export type TransactionSources = PlaidTransaction | SpadeTransaction;
+export type TransactionSources = MxTransaction | PlaidTransaction | SpadeTransaction;
 
 /** Represents the status for a Transaction. */
 export enum TransactionStatus {
