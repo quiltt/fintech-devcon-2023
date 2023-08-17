@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -3530,3 +3531,17 @@ export type TransactionUpdatePayload = {
   /** Specifies whether the mutation was successful. */
   success: Scalars['Boolean']['output'];
 };
+
+export type GetAccountsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAccountsQuery = { __typename?: 'Query', accounts?: Array<{ __typename?: 'Account', id: string }> | null };
+
+export type GetTransactionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTransactionsQuery = { __typename?: 'Query', transactionsConnection: { __typename?: 'TransactionConnection', nodes?: Array<{ __typename?: 'Transaction', id: string } | null> | null } };
+
+
+export const GetAccountsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAccounts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"accounts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetAccountsQuery, GetAccountsQueryVariables>;
+export const GetTransactionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetTransactions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transactionsConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetTransactionsQuery, GetTransactionsQueryVariables>;
