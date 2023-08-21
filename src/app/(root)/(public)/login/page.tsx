@@ -38,14 +38,22 @@ const LoginPage = () => {
   }
 
   return (
-    <section className="flex h-full flex-1 items-center justify-center p-4">
-      <a
-        className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
-        href="https://www.quiltthub.com"
-      >
-        Login with QuilttHub
-      </a>
-    </section>
+    <>
+      <section className="flex h-full flex-1 items-center justify-center p-4">
+        <a
+          className="m-2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+          href="https://www.quiltthub.com"
+        >
+          Login with QuilttHub (Live)
+        </a>
+        <a
+          className="m-2 rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-700"
+          href="https://www.quiltthub.com"
+        >
+          Login with QuilttHub (Sandbox)
+        </a>
+      </section>
+    </>
   )
 }
 
