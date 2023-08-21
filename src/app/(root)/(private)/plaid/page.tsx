@@ -1,19 +1,25 @@
 'use client'
 
-import { PlaidButton } from '@/components'
+import { CodeBlock, PlaidButton } from '@/components'
 import { usePlaidData } from '@/hooks'
 
 export default function PagePlaid() {
   const { data, loading, error } = usePlaidData()
 
   if (loading) {
-    return <>Loading...</>
+    return (
+      <section className="flex flex-1 flex-col items-center justify-center">Loading...</section>
+    )
+  }
+
+  if (error) {
+    console.error(error)
   }
 
   return (
-    <section>
+    <section className="flex flex-1 flex-col items-center justify-start space-y-4">
       <PlaidButton />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <CodeBlock>{JSON.stringify(data, null, 2)}</CodeBlock>
     </section>
   )
 }

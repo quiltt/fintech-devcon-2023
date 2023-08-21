@@ -1,6 +1,7 @@
 import { useRawData, QueryData } from './useRawData'
 
 import { gql } from '@quiltt/react'
+// @ts-ignore
 import { MxAccount, MxConnection, MxTransaction } from '../gql/graphql'
 
 const QUERY = gql(`

@@ -1,6 +1,6 @@
 'use client'
 
-import { MxButton, PlaidButton } from '@/components'
+import { CodeBlock, MxButton, PlaidButton } from '@/components'
 import { gql } from '@/gql'
 import { GetAccountsQuery } from '@/gql/graphql'
 import { useQuery } from '@quiltt/react'
@@ -17,14 +17,20 @@ export default function PageUnified() {
   const { data, loading, error } = useQuery<GetAccountsQuery>(AccountsQuery)
 
   if (loading) {
-    return <>Loading...</>
+    return (
+      <section className="flex flex-1 flex-col items-center justify-center">Loading...</section>
+    )
+  }
+
+  if (error) {
+    console.error(error)
   }
 
   return (
-    <section>
+    <section className="flex flex-1 flex-col items-center justify-start space-y-4">
       <PlaidButton />
       <MxButton />
-      <pre>{JSON.stringify(data?.accounts, null, 2)}</pre>
+      <CodeBlock>{JSON.stringify(data, null, 2)}</CodeBlock>
     </section>
   )
 }

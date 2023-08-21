@@ -9,7 +9,7 @@ import { useQuilttSession } from '@quiltt/react'
 
 type LayoutPublicProps = PropsWithChildren
 
-export const LayoutPublic: FC<LayoutPublicProps> = ({ children }) => {
+const LayoutPublic: FC<LayoutPublicProps> = ({ children }) => {
   const redirectTo = '/'
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
@@ -26,7 +26,9 @@ export const LayoutPublic: FC<LayoutPublicProps> = ({ children }) => {
   }, [router, session, redirectTo, isLoading])
 
   if (isLoading) {
-    return <>Loading...</>
+    return (
+      <section className="flex flex-1 flex-col items-center justify-center">Loading...</section>
+    )
   }
 
   if (!session) {

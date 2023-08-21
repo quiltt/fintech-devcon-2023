@@ -32,7 +32,9 @@ const LoginPage = () => {
   }, [redirectToken, importSession, router])
 
   if (!tokenChecked) {
-    return <>Loading...</>
+    return (
+      <section className="flex flex-1 flex-col items-center justify-center">Loading...</section>
+    )
   }
 
   return (

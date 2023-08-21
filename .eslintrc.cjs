@@ -1,4 +1,4 @@
-const prettierConfig = require('./prettier.config')
+const prettierConfig = import('./prettier.config.js').then((config) => config.default)
 
 module.exports = {
   plugins: ['prettier'],

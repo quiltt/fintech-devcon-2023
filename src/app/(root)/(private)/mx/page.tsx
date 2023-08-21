@@ -1,19 +1,25 @@
 'use client'
 
-import { MxButton } from '@/components'
+import { CodeBlock, MxButton } from '@/components'
 import { useMxData } from '@/hooks'
 
 export default function PageMx() {
   const { data, loading, error } = useMxData()
 
   if (loading) {
-    return <>Loading...</>
+    return (
+      <section className="flex flex-1 flex-col items-center justify-center">Loading...</section>
+    )
+  }
+
+  if (error) {
+    console.error(error)
   }
 
   return (
-    <section>
+    <section className="flex flex-1 flex-col items-center justify-start space-y-4">
       <MxButton />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <CodeBlock>{JSON.stringify(data, null, 2)}</CodeBlock>
     </section>
   )
 }
