@@ -5,6 +5,7 @@ import { gql } from '@/gql'
 import { GetAccountsQuery } from '@/gql/graphql'
 import { useQuery } from '@quiltt/react'
 
+// `npm graphql:codegen` to update types
 const AccountsQuery = gql(`
   query GetAccounts {
     accounts {
