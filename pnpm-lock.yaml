@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@quiltt/react':
-    specifier: 2.2.1
-    version: 2.2.1(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 2.3.0
+    version: 2.3.0(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)
   graphql:
     specifier: 16.7.1
     version: 16.7.1
@@ -1548,8 +1548,8 @@ packages:
       tslib: 2.6.1
     dev: true
 
-  /@quiltt/core@2.2.1(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-O2Txgk2CsKEc4UUOF/6vS8t4ipJTJ83g88Zf2skMerLLtb/+fKEwqrfWCW4vtEPy1MNagI1W7FmMYSFtcPu6mQ==}
+  /@quiltt/core@2.3.0(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8b35iUCHo1mxXpP61vkGQi5n/9ZJzRjtCe9G0z19hMUDOQXa2xsW6UcPvyR/5QiD2qFXZA63HywIi0bFSDqG4Q==}
     dependencies:
       '@apollo/client': 3.8.0(graphql@16.7.1)(react-dom@18.2.0)(react@18.2.0)
       axios: 1.4.0
@@ -1565,13 +1565,13 @@ packages:
       - subscriptions-transport-ws
     dev: false
 
-  /@quiltt/react@2.2.1(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-CdMgQSxrUZgcfNqV7mYc/OALJWsdCIXqtDrj477S/JYpBshsAJ1hu8WDApp2BhYIrgP2RpKphZCvRr7yrAmgpg==}
+  /@quiltt/react@2.3.0(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-36zRf8Vo0YwrH7IKrdayIXurJjCECOpckcDLbfE1XfshRnTcTPCisHaG3uC1MEJNuTFojMMg2sCLNdFfirAIZQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@quiltt/core': 2.2.1(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)
+      '@quiltt/core': 2.3.0(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:

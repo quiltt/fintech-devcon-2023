@@ -11,7 +11,7 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
-    "@quiltt/react": "2.2.1",
+    "@quiltt/react": "2.3.0",
     "graphql": "16.7.1",
     "next": "13.4.13",
     "react": "18.2.0",
