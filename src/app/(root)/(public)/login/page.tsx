@@ -48,7 +48,7 @@ const LoginPage = () => {
         </a>
         <a
           className="m-2 rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-700"
-          href="https://www.quiltthub.com"
+          href="https://sandbox.quiltthub.com"
         >
           Login with QuilttHub (Sandbox)
         </a>
