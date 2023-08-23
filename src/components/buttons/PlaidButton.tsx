@@ -12,8 +12,6 @@ export const PlaidButton = () => {
   const { session } = useQuilttSession()
   if (!session) return
 
-  console.log(session.claims.eid)
-
   return (
     <QuilttButton connectorId={CONNECTORS[session.claims.eid]} as={Button}>
       Launch Plaid Link
