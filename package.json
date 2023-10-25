@@ -13,7 +13,7 @@
   "dependencies": {
     "@quiltt/react": "2.3.0",
     "graphql": "16.7.1",
-    "next": "13.4.13",
+    "next": "13.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "15.5.0"
